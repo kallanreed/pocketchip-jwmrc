@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <JWM>
   <RootMenu height="18" onroot="12">
-
     <Program icon="terminal.png" label="Terminal">xfce4-terminal --hide-menubar --hide-toolbar --maximize</Program>
     <Program icon="pico8.png" label="PICO-8">pico8</Program>
     <Program icon="musicsequencer.png" label="SunVox">sunvox</Program>
@@ -38,14 +37,8 @@
       <Program label="100%">echo "10" > /sys/class/backlight/backlight/brightness</Program>
     </Menu>
 
-    <Menu label="WiFi">
-      <Program label="Configure">xfce4-terminal --hide-menubar --hide-toolbar -e nmtui</Program>
-    </Menu>
-
-    <Menu label="More">
-      <Program label="Shutdown">systemctl poweroff</Program>
-      <Program label="Reboot">systemctl reboot</Program>
-      <Exit label="Log Out"/>
+    <Menu label="Settings">
+      <Program label="WiFi">xfce4-terminal --hide-menubar --hide-toolbar -e nmtui</Program>
       <Separator/>
 
       <Program label="Screenshot (Shift+Alt+3)">xfce4-screenshooter -d 1 -f -s ~/Pictures</Program>
@@ -55,6 +48,12 @@
       <Program label="Edit .jwmrc">leafpad ~/.jwmrc</Program>
     </Menu>
 
+    <Menu label="Power">
+      <Program label="Shutdown">systemctl poweroff</Program>
+      <Program label="Reboot">systemctl reboot</Program>
+      <Program label="Sleep">xset dpms force suspend</Program>
+      <Exit label="Log Out"/>
+    </Menu>
   </RootMenu>
 
   <!-- By default we run all the programs maximized. -->
@@ -82,24 +81,18 @@
   </Group>
 
   <Tray x="0" y="-1" height="20" autohide="off" layer="normal"> 
-
     <TrayButton label="Start" popup="">root:1</TrayButton>
-
     <Pager labeled="false"/>
-
     <TaskList maxwidth="150"/>
-
     <Dock/>
 
     <!-- Here an external X program (our battery status one) is started and is wrapped into the tray. -->
     <Swallow name="pocketchip-xbatt" width="70">pocketchip-xbatt --text=#ffffff --background=#2d88f5</Swallow>
 
     <Clock format="%H:%M" zone=":America/Los_Angeles"/>
-
   </Tray>
 
   <WindowStyle>
-
     <Font>Sans-8:bold</Font>
     <Width>2</Width>
     <Height>15</Height>
@@ -119,7 +112,6 @@
       <Opacity>1</Opacity>
       <Corner>0</Corner>
     </Inactive>
-
   </WindowStyle>
 
   <TaskListStyle>
@@ -218,8 +210,8 @@
 
   <Key mask="C" key="q">close</Key>
 
-  <Key mask="C" key="space">root:1</Key>
-  <Key mask="A" key="space">window</Key>
+  <Key mask="C" key="Escape">root:1</Key>
+  <Key mask="A" key="Escape">window</Key>
   <Key key="XF86PowerOff">showdesktop</Key>
 
   <Key mask="C" key="#">desktop#</Key>
